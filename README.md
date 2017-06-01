@@ -35,6 +35,19 @@ t.update(50);
 reporter.report(true); // Send metrics to InfluxDB
 ```
 
+### Resetting values
+To reset the values of Counters, Histograms and Timers at specific times and intervals, Reporter.resetMetric can be used. It resets the given metric periodically at a specified interval, starting from the specified time. If the given time is past the present moment, the interval will start immediately. The time must be given in UTC.
+Syntax:
+Reporter.resetMetric(metricToReset, intervalHour, intervalMinute, intervalSecond, startHour, startMinute, startSecond)
+
+```javascript
+const c1 = new InfluxMetrics.Counter();
+reporter.addMetric('measurement.name', c1);
+// Reset the metric c1 every 10h 30m 5s, starting at 12.55pm
+// If the current time of day > 12.55pm, will start immediately
+reporter.resetMetric(c1, 10, 30, 5, 12, 55, 0);
+```
+
 ## Configuration
 
 The ``options`` object accepts the following fields:
