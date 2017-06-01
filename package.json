@@ -11,5 +11,5 @@
   "license": "MIT",
   "main": "lib/index.js",
   "name": "metrics-influx",
-  "version": "0.0.3"
+  "version": "0.0.4"
 }
